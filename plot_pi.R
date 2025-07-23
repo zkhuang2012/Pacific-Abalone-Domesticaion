@@ -1,21 +1,21 @@
 library(ggplot2)
 library(tidyverse)
 
-cns_tajimad <- read.delim("./CNS.w10k.pi", header = T)
-cnn_tajimad <- read.delim("./CNN.w10k.pi", header = T)
-jas_tajimad <- read.delim("./JAS.w10k.pi", header = T)
-jan_tajimad <- read.delim("./JAN.w10k.pi", header = T)
-kor_tajimad <- read.delim("./KOR.w10k.pi", header = T)
+cns_pi <- read.delim("./CNS.w10k.pi", header = T)
+cnn_pi <- read.delim("./CNN.w10k.pi", header = T)
+jas_pi <- read.delim("./JAS.w10k.pi", header = T)
+jan_pi <- read.delim("./JAN.w10k.pi", header = T)
+kor_pi <- read.delim("./KOR.w10k.pi", header = T)
 
-cns_tajimad$POP <- "CNS"
-cnn_tajimad$POP <- "CNN"
-jas_tajimad$POP <- "JAS"
-jan_tajimad$POP <- "JAN"
-kor_tajimad$POP <- "KOR"
+cns_pi$POP <- "CNS"
+cnn_pi$POP <- "CNN"
+jas_pi$POP <- "JAS"
+jan_pi$POP <- "JAN"
+kor_pi$POP <- "KOR"
 
-pops_tajimad <- rbind(cns_tajimad, cnn_tajimad) |> rbind(jas_tajimad) |> rbind(jan_tajimad) |> rbind(kor_tajimad)
+pops_pi <- rbind(cns_pi, cnn_pi) |> rbind(jas_pi) |> rbind(jan_pi) |> rbind(kor_pi)
 
-plot <- pops_tajimad %>%
+plot <- pops_pi %>%
   ggplot(aes(x = POP, y = PI, fill = POP, color = POP)) +
   geom_violin(
     stat = "ydensity",
